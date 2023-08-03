@@ -1,4 +1,4 @@
-package Ex03_Car;
+package Day04.Ex03_Car;
 
 public class Car {
 	// 모델명,속도
