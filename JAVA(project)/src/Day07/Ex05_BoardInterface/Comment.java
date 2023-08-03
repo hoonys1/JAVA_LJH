@@ -29,6 +29,4 @@ public class Comment extends Text{
 	public void setBoardNo(int boardNo) {
 		this.boardNo = boardNo;
 	}
-	
-	
 }
