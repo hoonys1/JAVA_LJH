@@ -20,6 +20,9 @@
 // 앞으로가기		: ctrl + y
 public class Key {
 
+	public static void main(String[] args) {
+		
+	}
 }
 
 //
