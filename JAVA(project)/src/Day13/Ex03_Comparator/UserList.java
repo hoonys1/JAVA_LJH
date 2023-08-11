@@ -40,8 +40,5 @@ public class UserList {
 			System.out.print(", age : " + user.age);
 			System.out.println();
 		}
-		
-		
-		
 	}
 }

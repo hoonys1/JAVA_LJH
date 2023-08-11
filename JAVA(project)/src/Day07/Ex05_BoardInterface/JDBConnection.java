@@ -8,29 +8,37 @@ import java.sql.Statement;
 
 public class JDBConnection {
 
-	public Connection con;
-	public Statement stmt;
-	public PreparedStatement psmt;
-	public ResultSet rs;
+	public Connection con;				// 연결된 드라이버에 SQL을 요청할 객체를 생성하는 클래스
+	public Statement stmt;				// SQL 실행 요청을 하는 클래스
+	public PreparedStatement psmt;		// Statement 에서 ? 파라미터 확장기능을 추가로 제공하는 클래스
+	public ResultSet rs;				// SQL 실행 결과를 받아오는 클래스
 	
 	// 기본 생성자
 	public JDBConnection() {
 		// JDBC 드라이버 로드
 		// MySQL
 		try {
-			Class.forName("com.mysql.cj.jdbc.Driver");
+			// mySQL-connector-j.xxx.jar 드라이버의 클래스를 로드한다.
+			Class.forName("com.mysql.cj.jdbc.Driver");	//저건 경로이고 .으로 끝나면 그대로 타고 가면 나온다.Driver.class
 			
 			// DB에 연결
+			// - 연결에 필요한 정보 : URL, id, pw
+			// URL : jdbc:mysql://도메인:[PORT]/[스키마]?옵션파라미터
+			//		* 내 PC의 IP주소 : localhost : 127.0.0.1
+			//		* 3306 : MySQL 데이터베이스의 기본 포트
+			//		* 스키마는 joeun 저 부분이며 저 부분이 가르키는거는 workbench에서 조은 계정에 들어가 처음 만든 스키마를 말한다.
 			String url = "jdbc:mysql://localhost:3306/joeun?serverTimezone=Asia/Seoul&allowPublicKeyRetrieval=true&useSSL=false";
 			String id = "joeun";
 			String pw = "123456";
 			
+			// 자바 프로그램에서 JDBC 드라이버를 연결시켜주는 클래스
+			// getConnection() 메소드로 DB에 연결 요청하고 생성된 Connection 객체를 반환받는다.
 			con = DriverManager.getConnection(url, id, pw);
 			
 			System.out.println("DB 연결 성공");
 		} catch (Exception e) {
 			System.err.println("DB 연결 실패");
-		e.printStackTrace();
+			e.printStackTrace();
 		}
 	}
 	
